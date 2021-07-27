@@ -1,0 +1,51 @@
+openapi: "3.0.0"
+info:
+  description: "Aktuelle Corona Risikogebietsinformationen als API"
+  version: "1.0.0"
+  title: "Robert Koch Institut: Corona Risikogebiete API"
+
+servers:
+  - url: 'https://api.einreiseanmeldung.de/reisendenportal/'
+
+paths:
+  /risikogebiete:
+    get:
+      description: Liste aller Länder mit Risikoeinstufung
+      summary: Liste der Länder
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskCountries'
+
+components:
+  schemas:
+    RiskCountries: 
+      type: array
+      items: 
+        type: object
+        properties: 
+          longName: 
+            type: string
+            example: Königreich Kambodscha
+          riskClass: 
+            type: string
+            format: nullable
+          regions: 
+            type: array
+            items: 
+              type: string
+          createdAt: 
+            type: string
+            example: 2021-07-26T22:00:08.412961
+          updatedAt: 
+            type: string
+            example: 2021-07-26T22:00:08.412961
+          id: 
+            type: string
+            example: KH
+          name: 
+            type: string
+            example: Kambodscha / Cambodia
