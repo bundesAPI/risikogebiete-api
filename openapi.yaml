@@ -5,7 +5,7 @@ info:
   title: "Robert Koch Institut: Corona Risikogebiete API"
 
 servers:
-  - url: 'https://api.einreiseanmeldung.de/reisendenportal/'
+  - url: 'https://api.einreiseanmeldung.de/reisendenportal'
 
 paths:
   /risikogebiete:
