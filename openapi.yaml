@@ -32,11 +32,21 @@ components:
             example: Königreich Kambodscha
           riskClass: 
             type: string
-            format: nullable
+            nullable: true
           regions: 
             type: array
             items: 
-              type: string
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Französisch-Guayana / French Guiana
+                type:
+                  type: string
+                  example: Überseegebiete / overseas territories
+                riskClass:
+                  type: string
+                  example: Hochinzidenzgebiet / high incidence area
           createdAt: 
             type: string
             example: 2021-07-26T22:00:08.412961
