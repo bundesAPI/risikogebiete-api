@@ -759,6 +759,7 @@ class Endpoint(object):
                 "_check_input_type",
                 "_check_return_type",
                 "_content_type",
+                "_spec_property_naming",
             ]
         )
         self.params_map["nullable"].extend(["_request_timeout"])
@@ -781,6 +782,7 @@ class Endpoint(object):
             "_return_http_data_only": (bool,),
             "_check_input_type": (bool,),
             "_check_return_type": (bool,),
+            "_spec_property_naming": (bool,),
             "_content_type": (none_type, str),
         }
         self.openapi_types.update(extra_types)
@@ -813,7 +815,7 @@ class Endpoint(object):
                 value,
                 self.openapi_types[key],
                 [key],
-                False,
+                kwargs["_spec_property_naming"],
                 kwargs["_check_input_type"],
                 configuration=self.api_client.configuration,
             )
@@ -842,12 +844,12 @@ class Endpoint(object):
                 if param_location == "form" and self.openapi_types[param_name] == (
                     file_type,
                 ):
-                    params["file"][param_name] = [param_value]
+                    params["file"][base_name] = [param_value]
                 elif param_location == "form" and self.openapi_types[param_name] == (
                     [file_type],
                 ):
                     # param_value is already a list
-                    params["file"][param_name] = param_value
+                    params["file"][base_name] = param_value
                 elif param_location in {"form", "query"}:
                     param_value_full = (base_name, param_value)
                     params[param_location].append(param_value_full)
